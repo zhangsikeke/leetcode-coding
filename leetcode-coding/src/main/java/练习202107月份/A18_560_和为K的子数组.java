@@ -3,6 +3,8 @@ package 练习202107月份;
 import java.util.*;
 
 /**
+ *
+ * 前缀和+hash
  * 7道题：https://leetcode-cn.com/problems/subarray-sum-equals-k/solution/de-liao-yi-wen-jiang-qian-zhui-he-an-pai-yhyf/</a>
  *
  * @author: keke
