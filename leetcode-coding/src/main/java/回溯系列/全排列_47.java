@@ -1,4 +1,4 @@
-package leetcode中等;
+package 回溯系列;
 
 import java.util.ArrayList;
 import java.util.Arrays;
