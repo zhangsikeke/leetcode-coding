@@ -16,7 +16,9 @@ public class A_704_二分查找_闭区间 {
      */
     public static int binarySearch(int[] nums, int target) {
         int left = 0;
+        // 注意使用闭区间
         int right = nums.length - 1;
+        // 注意是"<="
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (nums[mid] > target) {
