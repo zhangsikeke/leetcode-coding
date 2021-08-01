@@ -11,7 +11,7 @@ import java.util.Map;
  * @author: keke
  * @date: 2021/8/1 14:40
  */
-public class A_1_17_电话号码的字母组合 {
+public class A1_17_电话号码的字母组合 {
     private List<String> list;
 
     private static final Map<Character, String> digit_map = new HashMap<Character, String>() {{
@@ -46,7 +46,7 @@ public class A_1_17_电话号码的字母组合 {
     }
 
     public static void main(String[] args) {
-        A_1_17_电话号码的字母组合 test = new A_1_17_电话号码的字母组合();
+        A1_17_电话号码的字母组合 test = new A1_17_电话号码的字母组合();
         List<String> list = test.letterCombinations("256");
         System.out.println(list);
     }
