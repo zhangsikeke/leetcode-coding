@@ -3,21 +3,23 @@ package 深度搜索;
 import java.util.*;
 
 /**
+ * 图遍历
+ *
  * @author: keke
  * @date: 2021/8/1 15:35
  */
 public class Graph extends AbstractGraph {
 
-    public Graph(String[] vertexs, Edge[] edgeList, boolean directed) {
-        super(vertexs, edgeList, directed);
-        init(vertexs, edgeList, directed);
+    public Graph(String[] vertexes, Edge[] edgeList, boolean directed) {
+        super(vertexes, edgeList, directed);
+        init(vertexes, edgeList, directed);
     }
 
 
     @Override
-    public void init(String[] vertexs, Edge[] edgeList, boolean directed) {
-        this.size = vertexs.length;
-        this.vertexs = vertexs;
+    public void init(String[] vertexes, Edge[] edgeList, boolean directed) {
+        this.size = vertexes.length;
+        this.vertexes = vertexes;
         this.directed = directed;
         this.edges = new int[size][size];
 
@@ -46,7 +48,7 @@ public class Graph extends AbstractGraph {
         if (name == null)
             return -1;
         for (int i = 0; i < size; i++) {
-            if (name.equals(vertexs[i]))
+            if (name.equals(vertexes[i]))
                 return i;
         }
         return -1;
@@ -71,12 +73,12 @@ public class Graph extends AbstractGraph {
         visited[index] = 1;
         for (int i = 0; i < visited.length; i++) {
             if (edges[index][i] > 0 && visited[i] == 0) {
-                paths.add(tmpPath += SPLIT + vertexs[i]);
-                dfsSearch(vertexs[i], visited, tmpPath, paths);
+                paths.add(tmpPath += SPLIT + vertexes[i]);
+                dfsSearch(vertexes[i], visited, tmpPath, paths);
 
             }
-            if (edges[index][i] > 0 && !tmpPath.endsWith(vertexs[i])) {
-                paths.add(name + SPLIT + vertexs[i]);
+            if (edges[index][i] > 0 && !tmpPath.endsWith(vertexes[i])) {
+                paths.add(name + SPLIT + vertexes[i]);
             }
         }
 
@@ -98,7 +100,7 @@ public class Graph extends AbstractGraph {
             int nodeIndex = quene.removeFirst();
 
             // 访问出队节点
-            System.out.print(vertexs[nodeIndex] + " ");
+            System.out.print(vertexes[nodeIndex] + " ");
 
             // 邻节点入队
             for (int i = 0; i < size; i++) {
@@ -148,7 +150,7 @@ public class Graph extends AbstractGraph {
         visited[startIndex] = true;
         // 如果当前点是目标点，输出
         if (startIndex == endIndex) {
-            getMessage(stack, pathMap);
+            savePathToMap(stack, pathMap);
             visited[startIndex] = false;
             stack.pop();
             return;
@@ -156,7 +158,7 @@ public class Graph extends AbstractGraph {
         // 对相连的每个顶点进行搜索
         for (int i = 0; i < size; i++) {
             if (edges[startIndex][i] > 0 && startIndex != i) {
-                getPaths(vertexs[i], toName, visited, stack, pathMap);
+                getPaths(vertexes[i], toName, visited, stack, pathMap);
             }
 
         }
@@ -165,11 +167,17 @@ public class Graph extends AbstractGraph {
         stack.pop();
     }
 
-    private void getMessage(Stack<Integer> stack, Map<String, String> pathMap) {
+    /**
+     * 保存路径
+     *
+     * @param stack
+     * @param pathMap
+     */
+    private void savePathToMap(Stack<Integer> stack, Map<String, String> pathMap) {
         Iterator<Integer> iterator = stack.iterator();
         String messageString = "";
         while (iterator.hasNext()) {
-            messageString += vertexs[iterator.next()] + SPLIT;
+            messageString += vertexes[iterator.next()] + SPLIT;
         }
         if (stack.size() == 0)
             return;
@@ -184,9 +192,9 @@ public class Graph extends AbstractGraph {
         // 添加闭环信息
         if ((j = trace.indexOf(v)) != -1) {
             StringBuffer sb = new StringBuffer();
-            String startNode = vertexs[trace.get(j)];
+            String startNode = vertexes[trace.get(j)];
             while (j < trace.size()) {
-                sb.append(vertexs[trace.get(j)] + "-");
+                sb.append(vertexes[trace.get(j)] + "-");
                 j++;
             }
             System.out.println("cycle:" + sb.toString() + startNode);

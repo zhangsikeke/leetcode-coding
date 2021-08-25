@@ -45,4 +45,30 @@ public class A23_797_所有可能的路径 {
         res.remove(res.size() - 1);
         visited[pos] = false;
     }
+
+    // bfs
+    public List<List<Integer>> bfs(int[][] graph) {
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        path.add(0);
+        Queue<List<Integer>> queue = new LinkedList<>();
+        queue.offer(path);
+        while (!queue.isEmpty()) {
+            List<Integer> currentPath = queue.poll();
+            // 最后一个是当前访问的位置
+            int currentPos = currentPath.get(currentPath.size() - 1);
+            // 继续层级遍历
+            for (int i : graph[currentPos]) {
+                currentPath.add(i);
+                if (i == graph.length - 1) {
+                    res.add(new ArrayList<>(currentPath));
+                } else {
+                    queue.offer(new ArrayList<>(currentPath));
+                }
+                // 回溯
+                currentPath.remove(currentPath.size() - 1);
+            }
+        }
+        return res;
+    }
 }

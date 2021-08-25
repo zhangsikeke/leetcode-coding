@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public abstract class AbstractGraph {
     // 顶点数组
-    protected String[] vertexs;
+    protected String[] vertexes;
     // 邻接矩阵的二维数组
     protected int[][] edges;
     // 是否有向图
@@ -21,17 +21,17 @@ public abstract class AbstractGraph {
     // 方向标识
     public final static String SPLIT = "->";
 
-    AbstractGraph(String[] vertexs, Edge[] edgeList, boolean directed) {
+    AbstractGraph(String[] vertexes, Edge[] edgeList, boolean directed) {
     }
 
     /**
      * 初始化图
      *
-     * @param vertexs
+     * @param vertexes
      * @param edgeList
      * @param directed
      */
-    public abstract void init(String[] vertexs, Edge[] edgeList, boolean directed);
+    public abstract void init(String[] vertexes, Edge[] edgeList, boolean directed);
 
     /**
      * 获取顶点位子索引
