@@ -1,4 +1,4 @@
-package 周赛.第60周;
+package 周赛.第60场双周赛;
 
 import java.util.ArrayList;
 import java.util.List;
